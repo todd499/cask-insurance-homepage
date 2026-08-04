@@ -4,27 +4,31 @@
 
 :root,
 [data-theme='light'] {
-  /* Surfaces — warm parchment, evoking aged paper & oak */
-  --color-bg: #f6f1e7;
-  --color-surface: #fbf7ef;
+  /* Surfaces — cream & lavender, per Cask Agency brand guide */
+  --color-bg: #eeebf7;
+  --color-surface: #e9e5f3;
   --color-surface-2: #ffffff;
-  --color-surface-offset: #ede4d3;
-  --color-surface-offset-2: #e3d6bf;
-  --color-surface-dynamic: #ddcda9;
-  --color-divider: #e1d5be;
-  --color-border: #d6c7aa;
+  --color-surface-offset: #e2dcf0;
+  --color-surface-offset-2: #d6cce6;
+  --color-surface-dynamic: #c9bce0;
+  --color-divider: #d6cce6;
+  --color-border: #c9bce0;
 
-  /* Text — deep espresso */
-  --color-text: #24190f;
-  --color-text-muted: #6e5c46;
-  --color-text-faint: #a8987c;
-  --color-text-inverse: #fbf7ef;
+  /* Text — dark purple */
+  --color-text: #24193f;
+  --color-text-muted: #5b4e78;
+  --color-text-faint: #8d80ab;
+  --color-text-inverse: #f4f1fa;
 
-  /* Primary accent — burnished copper (whiskey/amber) */
-  --color-primary: #a15a24;
-  --color-primary-hover: #7e4419;
-  --color-primary-active: #603210;
-  --color-primary-highlight: #e8d2b8;
+  /* Primary accent — sky blue (buttons pair with dark-purple text) */
+  --color-primary: #8cb3fb;
+  --color-primary-hover: #a6c5fc;
+  --color-primary-active: #6f9ceb;
+  --color-primary-highlight: #dce7fd;
+  --color-on-primary: #1b1330;
+
+  /* Secondary accent — light purple, for decorative use */
+  --color-secondary: #bdb0de;
 
   /* Radius */
   --radius-sm: 0.25rem;
@@ -47,29 +51,35 @@
   --content-wide: 1240px;
   --content-full: 100%;
 
+  /* Fisterra (headline) is a licensed display serif from TipoType — Fraunces
+     is used here as a free stand-in with a similar informal, humanist serif
+     character. Swap in @font-face rules for Fisterra if a license is available. */
   --font-display: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
-  --font-body: 'Switzer', 'Work Sans', 'Helvetica Neue', sans-serif;
+  --font-body: 'Montserrat', 'Inter', 'Helvetica Neue', sans-serif;
 }
 
 [data-theme='dark'] {
-  --color-bg: #17110b;
-  --color-surface: #1d160e;
-  --color-surface-2: #221a11;
-  --color-surface-offset: #271e13;
-  --color-surface-offset-2: #2e2316;
-  --color-surface-dynamic: #392a19;
-  --color-divider: #2c2115;
-  --color-border: #3d2e1c;
+  --color-bg: #1b1330;
+  --color-surface: #24193f;
+  --color-surface-2: #2c2049;
+  --color-surface-offset: #2f2350;
+  --color-surface-offset-2: #392c5c;
+  --color-surface-dynamic: #443768;
+  --color-divider: #392c5c;
+  --color-border: #443768;
 
-  --color-text: #ede3d2;
-  --color-text-muted: #b5a489;
-  --color-text-faint: #7a6b53;
-  --color-text-inverse: #17110b;
+  --color-text: #e9e5f3;
+  --color-text-muted: #bdb0de;
+  --color-text-faint: #8a7dae;
+  --color-text-inverse: #1b1330;
 
-  --color-primary: #e0964a;
-  --color-primary-hover: #efb06c;
-  --color-primary-active: #c77a2e;
-  --color-primary-highlight: #3a2a18;
+  --color-primary: #8cb3fb;
+  --color-primary-hover: #a6c5fc;
+  --color-primary-active: #6f9ceb;
+  --color-primary-highlight: #33406b;
+  --color-on-primary: #1b1330;
+
+  --color-secondary: #bdb0de;
 
   --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.35);
   --shadow-md: 0 6px 20px oklch(0 0 0 / 0.4);
@@ -149,7 +159,7 @@ a {
   top: 0;
   z-index: 100;
   background: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-on-primary);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-sm);
 }
@@ -198,9 +208,9 @@ a {
   flex-shrink: 0;
 }
 .brand__mark {
-  width: 34px;
-  height: 34px;
-  color: var(--color-primary);
+  width: 44px;
+  height: 44px;
+  color: var(--color-text);
   flex-shrink: 0;
 }
 .brand__name {
@@ -295,7 +305,7 @@ a {
 }
 .btn--primary {
   background: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-on-primary);
 }
 .btn--primary:hover {
   background: var(--color-primary-hover);
@@ -310,7 +320,8 @@ a {
 }
 .btn--ghost:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: var(--color-text);
+  background: var(--color-primary-highlight);
 }
 .btn--lg {
   padding: var(--space-4) var(--space-8);
@@ -344,9 +355,9 @@ a {
   inset: 0;
   background: linear-gradient(
     180deg,
-    oklch(0.1 0.03 50 / 0.55) 0%,
-    oklch(0.08 0.03 50 / 0.72) 55%,
-    oklch(0.06 0.02 50 / 0.88) 100%
+    oklch(0.14 0.06 305 / 0.6) 0%,
+    oklch(0.11 0.06 305 / 0.76) 55%,
+    oklch(0.08 0.05 305 / 0.9) 100%
   );
 }
 .hero__content {
@@ -363,7 +374,7 @@ a {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #e8d2b8;
+  color: var(--color-secondary);
   margin-bottom: var(--space-6);
 }
 .hero__eyebrow::before {
@@ -377,14 +388,14 @@ a {
   font-weight: 500;
   line-height: 1.04;
   margin-bottom: var(--space-6);
-  color: #fbf7ef;
+  color: #f4f1fa;
 }
 .hero__mission {
   font-family: var(--font-display);
   font-style: italic;
   font-size: var(--text-lg);
   font-weight: 400;
-  color: #e4d7c2;
+  color: #dcd4ef;
   max-width: 620px;
   margin-bottom: var(--space-10);
   padding-left: var(--space-5);
@@ -397,11 +408,12 @@ a {
 }
 .hero .btn--ghost {
   border-color: oklch(1 0 0 / 0.35);
-  color: #fbf7ef;
+  color: #f4f1fa;
 }
 .hero .btn--ghost:hover {
-  border-color: #e8d2b8;
-  color: #e8d2b8;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
 }
 
 /* ==========================================================================
