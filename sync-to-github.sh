@@ -6,14 +6,12 @@ set -e
 
 cd "$(dirname "$0")"
 
-git pull --rebase origin main
-
 if [ -n "$(git status --porcelain)" ]; then
   git add -A
   msg="${1:-Update site $(date -u +%Y-%m-%dT%H:%M:%SZ)}"
   git commit -m "$msg"
-  git push origin main
-  echo "Synced to GitHub."
-else
-  echo "Nothing to sync — working tree clean."
 fi
+
+git pull --rebase origin main
+git push origin main
+echo "Synced to GitHub."
