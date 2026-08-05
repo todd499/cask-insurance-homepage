@@ -71,4 +71,42 @@
       });
     });
   }
+
+  /* Contact form — client-side validation + mailto fallback */
+  var contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    var statusEl = contactForm.querySelector('[data-form-status]');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = contactForm.querySelector('#cf-name').value.trim();
+      var company = contactForm.querySelector('#cf-company').value.trim();
+      var email = contactForm.querySelector('#cf-email').value.trim();
+      var phone = contactForm.querySelector('#cf-phone').value.trim();
+      var message = contactForm.querySelector('#cf-message').value.trim();
+
+      if (!name || !email || !phone) {
+        statusEl.textContent = 'Please fill in your name, email, and phone number.';
+        statusEl.setAttribute('data-status', 'error');
+        return;
+      }
+
+      var bodyLines = [
+        'Name: ' + name,
+        company ? 'Company: ' + company : null,
+        'Email: ' + email,
+        'Phone: ' + phone,
+        message ? '\nComments or Questions:\n' + message : null
+      ].filter(Boolean);
+
+      var mailto =
+        'mailto:info@caskagency.com?subject=' +
+        encodeURIComponent('Website Inquiry from ' + name) +
+        '&body=' +
+        encodeURIComponent(bodyLines.join('\n'));
+
+      window.location.href = mailto;
+      statusEl.removeAttribute('data-status');
+      statusEl.textContent = "Opening your email client to send this message\u2026";
+    });
+  }
 })();

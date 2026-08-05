@@ -233,15 +233,55 @@
     <!-- ============ CTA / CONTACT ============ -->
     <section class="section" id="contact">
       <div class="container">
-        <div class="cta">
-          <div>
+        <div class="contact">
+          <div class="contact__intro">
+            <p class="eyebrow">Contact</p>
             <h2 class="cta__title">Ready to protect your barrel portfolio?</h2>
             <p class="cta__lede">Whether you're insuring individual holdings or an inventory of thousands, our team can walk you through coverage built for the spirits market.</p>
+            <ul class="contact__details" role="list">
+              <li>
+                <span class="contact__label">Phone</span>
+                <a href="tel:+14808683250">(480) 868-3250</a>
+              </li>
+              <li>
+                <span class="contact__label">Email</span>
+                <a href="mailto:info@caskagency.com">info@caskagency.com</a>
+              </li>
+              <li>
+                <span class="contact__label">Office</span>
+                <span>7835 E Evans Road, Suite 300<br />Scottsdale, AZ 85260</span>
+              </li>
+            </ul>
           </div>
-          <div class="cta__actions">
-            <a href="mailto:info@caskagency.com" class="btn btn--primary btn--lg">Contact Us</a>
-            <p class="cta__email">Or email us directly at <a href="mailto:info@caskagency.com">info@caskagency.com</a></p>
-          </div>
+
+          <form class="contact__form" id="contact-form" data-contact-form novalidate>
+            <h3 class="contact__form-title">Send Us A Message</h3>
+            <p class="contact__required-note">* indicates required fields</p>
+
+            <div class="form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form__field">
+              <label for="cf-company">Company Name (If For a Business)</label>
+              <input type="text" id="cf-company" name="company" autocomplete="organization" />
+            </div>
+            <div class="form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form__field">
+              <label for="cf-phone">Phone <span aria-hidden="true">*</span></label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" required />
+            </div>
+            <div class="form__field">
+              <label for="cf-message">Comments or Questions</label>
+              <textarea id="cf-message" name="message" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg contact__submit">Send</button>
+            <p class="contact__form-note" data-form-status role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
