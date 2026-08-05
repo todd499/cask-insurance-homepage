@@ -278,6 +278,27 @@
               <label for="cf-message">Comments or Questions</label>
               <textarea id="cf-message" name="message" rows="4"></textarea>
             </div>
+            <div class="form__field">
+              <label for="cf-attachment">Attach File(s)</label>
+              <div class="form__file">
+                <input
+                  type="file"
+                  id="cf-attachment"
+                  name="attachment"
+                  class="form__file-input"
+                  multiple
+                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                />
+                <label class="form__file-button" for="cf-attachment">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21.44 11.05 12.25 20.24a5.5 5.5 0 0 1-7.78-7.78l9.19-9.19a3.5 3.5 0 0 1 4.95 4.95L9.42 17.02a1.5 1.5 0 0 1-2.12-2.12l8.49-8.49"></path>
+                  </svg>
+                  Choose files
+                </label>
+                <span class="form__file-status" data-file-status>No files selected</span>
+              </div>
+              <p class="form__hint">PDF, DOC, JPG, or PNG. Since this is a demo mailto form, you'll be asked to attach these files manually in the email that opens.</p>
+            </div>
 
             <button type="submit" class="btn btn--primary btn--lg contact__submit">Send</button>
             <p class="contact__form-note" data-form-status role="status" aria-live="polite"></p>

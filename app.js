@@ -76,6 +76,21 @@
   var contactForm = document.querySelector('[data-contact-form]');
   if (contactForm) {
     var statusEl = contactForm.querySelector('[data-form-status]');
+    var attachmentInput = contactForm.querySelector('#cf-attachment');
+    var fileStatusEl = contactForm.querySelector('[data-file-status]');
+
+    if (attachmentInput && fileStatusEl) {
+      attachmentInput.addEventListener('change', function () {
+        var files = attachmentInput.files;
+        if (!files || !files.length) {
+          fileStatusEl.textContent = 'No files selected';
+          return;
+        }
+        var names = Array.prototype.map.call(files, function (f) { return f.name; });
+        fileStatusEl.textContent = files.length === 1 ? names[0] : files.length + ' files selected';
+      });
+    }
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = contactForm.querySelector('#cf-name').value.trim();
@@ -83,6 +98,9 @@
       var email = contactForm.querySelector('#cf-email').value.trim();
       var phone = contactForm.querySelector('#cf-phone').value.trim();
       var message = contactForm.querySelector('#cf-message').value.trim();
+      var attachmentNames = attachmentInput && attachmentInput.files.length
+        ? Array.prototype.map.call(attachmentInput.files, function (f) { return f.name; }).join(', ')
+        : '';
 
       if (!name || !email || !phone) {
         statusEl.textContent = 'Please fill in your name, email, and phone number.';
@@ -95,7 +113,8 @@
         company ? 'Company: ' + company : null,
         'Email: ' + email,
         'Phone: ' + phone,
-        message ? '\nComments or Questions:\n' + message : null
+        message ? '\nComments or Questions:\n' + message : null,
+        attachmentNames ? '\nFiles to attach manually: ' + attachmentNames : null
       ].filter(Boolean);
 
       var mailto =
@@ -106,7 +125,9 @@
 
       window.location.href = mailto;
       statusEl.removeAttribute('data-status');
-      statusEl.textContent = "Opening your email client to send this message\u2026";
+      statusEl.textContent = attachmentNames
+        ? "Opening your email client \u2014 don't forget to manually attach: " + attachmentNames
+        : "Opening your email client to send this message\u2026";
     });
   }
 })();
