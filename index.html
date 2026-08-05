@@ -254,55 +254,22 @@
             </ul>
           </div>
 
-          <form class="contact__form" id="contact-form" data-contact-form novalidate>
+          <div class="contact__form">
             <h3 class="contact__form-title">Send Us A Message</h3>
-            <p class="contact__required-note">* indicates required fields</p>
-
-            <div class="form__field">
-              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="cf-name" name="name" autocomplete="name" required />
+            <p class="contact__required-note">Fields marked required must be completed before submitting.</p>
+            <div class="contact__tally-wrap">
+              <iframe
+                data-tally-src="https://tally.so/embed/RGQ8vp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                loading="lazy"
+                width="100%"
+                height="832"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                title="Cask Agency Contact Form"
+              ></iframe>
             </div>
-            <div class="form__field">
-              <label for="cf-company">Company Name (If For a Business)</label>
-              <input type="text" id="cf-company" name="company" autocomplete="organization" />
-            </div>
-            <div class="form__field">
-              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
-              <input type="email" id="cf-email" name="email" autocomplete="email" required />
-            </div>
-            <div class="form__field">
-              <label for="cf-phone">Phone <span aria-hidden="true">*</span></label>
-              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" required />
-            </div>
-            <div class="form__field">
-              <label for="cf-message">Comments or Questions</label>
-              <textarea id="cf-message" name="message" rows="4"></textarea>
-            </div>
-            <div class="form__field">
-              <label for="cf-attachment">Attach File(s)</label>
-              <div class="form__file">
-                <input
-                  type="file"
-                  id="cf-attachment"
-                  name="attachment"
-                  class="form__file-input"
-                  multiple
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                />
-                <label class="form__file-button" for="cf-attachment">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21.44 11.05 12.25 20.24a5.5 5.5 0 0 1-7.78-7.78l9.19-9.19a3.5 3.5 0 0 1 4.95 4.95L9.42 17.02a1.5 1.5 0 0 1-2.12-2.12l8.49-8.49"></path>
-                  </svg>
-                  Choose files
-                </label>
-                <span class="form__file-status" data-file-status>No files selected</span>
-              </div>
-              <p class="form__hint">PDF, DOC, JPG, or PNG. Since this is a demo mailto form, you'll be asked to attach these files manually in the email that opens.</p>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--lg contact__submit">Send</button>
-            <p class="contact__form-note" data-form-status role="status" aria-live="polite"></p>
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -346,5 +313,21 @@
   </footer>
 
   <script src="./app.js" defer></script>
+  <script>
+    var d = document,
+      w = "https://tally.so/widgets/embed.js",
+      v = function () {
+        "undefined" != typeof Tally
+          ? Tally.loadEmbeds()
+          : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) {
+              e.src = e.dataset.tallySrc;
+            });
+      };
+    if ("undefined" != typeof Tally) v();
+    else if (d.querySelector('script[src="' + w + '"]') == null) {
+      var s = d.createElement("script");
+      (s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
+    }
+  </script>
 </body>
 </html>
