@@ -189,6 +189,10 @@ a {
   box-shadow: var(--shadow-sm);
 }
 
+.header .container {
+  padding-inline: clamp(var(--space-5), 4vw, var(--space-10));
+}
+
 .header__inner {
   display: flex;
   align-items: center;
@@ -243,7 +247,7 @@ a {
 }
 .nav__links {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   min-width: 0;
 }
 .nav__links a {
@@ -956,7 +960,7 @@ a {
 /* ==========================================================================
    Responsive
    ========================================================================== */
-@media (max-width: 1040px) {
+@media (max-width: 1220px) {
   .nav__links {
     display: none;
   }
