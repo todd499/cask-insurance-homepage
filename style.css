@@ -893,6 +893,14 @@ a {
   background: var(--color-primary);
   color: var(--color-on-primary);
 }
+.footer__social-link--pending {
+  opacity: 0.5;
+  cursor: default;
+}
+.footer__social-link--pending:hover {
+  background: var(--color-surface-offset);
+  color: var(--color-text-muted);
+}
 .footer__cols {
   display: flex;
   gap: var(--space-16);
